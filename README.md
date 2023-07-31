@@ -2,6 +2,8 @@
 
 [ThumbHash](https://github.com/evanw/thumbhash) plugin for Bun.
 
+A very compact representation of a placeholder for an image. Store it inline with your data and show it while the real image is loading for a smoother loading experience.
+
 ## Install
 
 ```bash
