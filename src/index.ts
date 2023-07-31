@@ -3,7 +3,7 @@ import { rgbaToThumbHash, thumbHashToDataURL } from 'thumbhash'
 
 export default function thumbhashPlugin(): import('bun').BunPlugin {
   return {
-    name: 'https-plugin',
+    name: 'bun-plugin-thumbhash',
     async setup(build) {
       const exportsCache = new Map<string, Record<string, any>>()
 
