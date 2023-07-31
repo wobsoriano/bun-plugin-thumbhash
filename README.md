@@ -32,7 +32,7 @@ export function App() {
   const [isLoading] = useState(false)
   return (
     <>
-      { loading 
+      { isLoading 
         ? <img src={Image.src} width={Image.width} height={Image.height} />
         : <img src={Image.originalSrc} width={Image.originalWidth} height={Image.originalHeight} />
       }
