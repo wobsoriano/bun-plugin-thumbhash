@@ -1,24 +1,44 @@
-# bun starter
+# bun-plugin-thumbhash
 
-## Getting Started
+[ThumbHash](https://github.com/evanw/thumbhash) plugin for Bun.
 
-Click the [Use this template](https://github.com/wobsoriano/bun-lib-starter/generate) button to create a new repository with the contents starter.
-
-OR
-
-Run `bun create wobsoriano/bun-lib-starter ./my-lib`.
-
-## Setup
+## Install
 
 ```bash
-# install dependencies
-bun install
+bun install bun-plugin-thumbhash
+```
 
-# test the app
-bun test
+## Usage
 
-# build the app, available under dist
-bun run build
+```ts
+import { plugin } from 'bun'
+import thumbhash from 'bun-plugin-thumbhash'
+
+plugin(thumbhash())
+```
+
+```tsx
+import Image from './example.png?thumb'
+
+export function App() {
+  const [isLoading] = useState(false)
+  return (
+    <>
+      { loading 
+        ? <img src={Image.src} width={Image.width} height={Image.height} />
+        : <img src={Image.originalSrc} width={Image.originalWidth} height={Image.originalHeight} />
+      }
+    </>
+  )
+}
+```
+
+## TypeScript Shim
+
+Add the following to your `.d.ts` file:
+
+```
+/// <reference types="bun-plugin-thumbhash/client" />
 ```
 
 ## License
