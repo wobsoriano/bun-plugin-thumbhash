@@ -37,7 +37,7 @@ export function App() {
 
 Add the following to your `.d.ts` file:
 
-```
+```ts
 /// <reference types="bun-plugin-thumbhash/client" />
 ```
 
