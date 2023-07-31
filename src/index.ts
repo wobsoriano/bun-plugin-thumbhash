@@ -1,6 +1,14 @@
 import { createCanvas, loadImage } from '@napi-rs/canvas'
 import { rgbaToThumbHash, thumbHashToDataURL } from 'thumbhash'
 
+function bufferToDataURL(buffer: Buffer) {
+  const dataPrefix = 'data:png;base64,'
+
+  const dataURL = `${dataPrefix}${buffer.toString('base64')}`
+
+  return dataURL
+}
+
 export default function thumbhashPlugin(): import('bun').BunPlugin {
   return {
     name: 'bun-plugin-thumbhash',
@@ -31,7 +39,7 @@ export default function thumbhashPlugin(): import('bun').BunPlugin {
         const image = await loadImage(args.path)
         const canvas = createCanvas(image.width, image.height)
         const context = canvas.getContext('2d')
-
+        
         const scale = 100 / Math.max(image.width, image.height)
         canvas.width = Math.round(image.width * scale)
         canvas.height = Math.round(image.height * scale)
@@ -46,7 +54,7 @@ export default function thumbhashPlugin(): import('bun').BunPlugin {
           src: placeholderURL,
           width: pixels.width,
           height: pixels.height,
-          originalSrc: image.src,
+          originalSrc: bufferToDataURL(image.src),
           originalHeight: image.height,
           originalWidth: image.width,
         }
