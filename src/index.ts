@@ -7,12 +7,10 @@ export default function thumbhashPlugin(): import('bun').BunPlugin {
     async setup(build) {
       const exportsCache = new Map<string, Record<string, any>>()
 
-      build.onResolve({ filter: /.*\?thumb$/ }, args => {
-        return {
-          path: args.path,
-          namespace: 'thumbhash',
-        }
-      })
+      build.onResolve({ filter: /.*\?thumb$/ }, args => ({
+        path: args.path,
+        namespace: 'thumbhash',
+      }))
 
       build.onResolve({ filter: /.*/, namespace: 'thumbhash' }, args => {
         const path = new URL(args.path, `file://${args.importer}`).toString().replace('file://', '').replace('?thumb', '')
@@ -22,7 +20,7 @@ export default function thumbhashPlugin(): import('bun').BunPlugin {
         }
       })
 
-      build.onLoad({ filter: /.*/, namespace: 'thumbhash' }, async (args) => {
+      build.onLoad({ filter: /\.(png|jpe?g|gif|webp|bmp|tiff?)$/, namespace: 'thumbhash' }, async (args) => {
         if (exportsCache.has(args.path)) {
           return {
             contents: `export default ${JSON.stringify(exportsCache.get(args.path))}`,
