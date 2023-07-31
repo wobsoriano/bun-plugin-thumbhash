@@ -2,14 +2,21 @@
   "name": "bun-plugin-thumbhash",
   "version": "0.0.1",
   "main": "dist/index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js"
+    },
+    "./client": "./client.d.ts"
+  },
   "types": "dist/index.d.ts",
-  "description": "",
+  "description": "ThumbHash plugin for Bun.",
   "scripts": {
     "build": "bun run build.mjs",
     "prepublishOnly": "bun run build"
   },
   "files": [
-    "dist"
+    "dist",
+    "client.d.ts"
   ],
   "keywords": [
     "bun"
