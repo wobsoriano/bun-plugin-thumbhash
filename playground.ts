@@ -1,3 +1,3 @@
-import * as data from "./download.jpg?thumb"
+import Image from "./download.jpg?thumb"
 
-console.log(data);
+console.log(Image.src);

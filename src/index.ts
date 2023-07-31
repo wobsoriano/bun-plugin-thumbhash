@@ -25,8 +25,8 @@ export default function thumbhashPlugin(): import('bun').BunPlugin {
       build.onLoad({ filter: /.*/, namespace: 'thumbhash' }, async (args) => {
         if (exportsCache.has(args.path)) {
           return {
-            exports: exportsCache.get(args.path)!,
-            loader: 'object',
+            contents: `export default ${JSON.stringify(exportsCache.get(args.path))}`,
+            loader: 'js',
           }
         }
 
@@ -56,8 +56,8 @@ export default function thumbhashPlugin(): import('bun').BunPlugin {
         exportsCache.set(args.path, exports)
 
         return {
-          exports,
-          loader: 'object',
+          contents: `export default ${JSON.stringify(exports)}`,
+          loader: 'js',
         }
       })
     }
