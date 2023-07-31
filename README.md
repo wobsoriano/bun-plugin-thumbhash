@@ -1,5 +1,11 @@
 # bun-plugin-thumbhash
 
+
+
+https://github.com/wobsoriano/bun-plugin-thumbhash/assets/13049130/3cbf35ce-d7cb-495e-93fc-77816e32dbf9
+
+
+
 [ThumbHash](https://github.com/evanw/thumbhash) plugin for Bun.
 
 A very compact representation of a placeholder for an image. Store it inline with your data and show it while the real image is loading for a smoother loading experience.
