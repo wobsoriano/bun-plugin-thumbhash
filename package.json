@@ -1,6 +1,6 @@
 {
   "name": "bun-plugin-thumbhash",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "main": "dist/index.js",
   "exports": {
     ".": {
@@ -36,7 +36,7 @@
     "bun-types": "^0.7.1",
     "typescript": "^5.1.6",
     "bumpp": "^9.1.1",
-    "@elysiajs/html":"^0.5.2",
+    "@elysiajs/html": "^0.5.2",
     "elysia": "^0.5.25"
   },
   "dependencies": {
