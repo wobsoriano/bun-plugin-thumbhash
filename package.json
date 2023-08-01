@@ -24,12 +24,12 @@
     "bun"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/wobsoriano/pkg-name#readme",
+  "homepage": "https://github.com/wobsoriano/bun-plugin-thumbhash#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wobsoriano/pkg-name.git"
+    "url": "git+https://github.com/wobsoriano/bun-plugin-thumbhash.git"
   },
-  "bugs": "https://github.com/wobsoriano/pkg-name/issues",
+  "bugs": "https://github.com/wobsoriano/bun-plugin-thumbhash/issues",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "devDependencies": {
     "bun-plugin-dts": "^0.1.0",
