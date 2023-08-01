@@ -21,9 +21,7 @@ export default function thumbhashPlugin(): import('bun').BunPlugin {
       }))
 
       build.onResolve({ filter: /.*/, namespace: 'thumbhash' }, args => {
-        const path = new URL(args.path, `file://${args.importer}`)
-        .toString()
-        .replace('file://', '').replace('?thumb', '')
+        const path = Bun.fileURLToPath(new URL(args.path, Bun.pathToFileURL(args.importer)))
         
         return {
           path,
