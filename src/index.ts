@@ -51,11 +51,19 @@ export default function thumbhashPlugin(): import('bun').BunPlugin {
         // ThumbHash to data URL
         const placeholderURL = thumbHashToDataURL(binaryThumbHash)
 
+        let originalSrc: any;
+
+        try {
+          originalSrc = await import(args.path)
+        } catch {
+          originalSrc = bufferToDataURL(image.src)
+        }
+
         const exports = {
           src: placeholderURL,
           width: pixels.width,
           height: pixels.height,
-          originalSrc: bufferToDataURL(image.src),
+          originalSrc,
           originalHeight: image.height,
           originalWidth: image.width,
         }

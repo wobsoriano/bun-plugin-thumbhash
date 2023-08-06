@@ -2,7 +2,7 @@ type ThumbHash = {
   src: string
   width: number
   height: number
-  originalSrc: string
+  originalSrc: string | unknown
   originalWidth: number
   originalHeight: number
 }

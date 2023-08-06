@@ -20,3 +20,5 @@ new Elysia()
     .get('/', () => page)
     .get('/html', ({ html }) => html(page))
     .listen(8080)
+
+console.log('Running on port 8080')
