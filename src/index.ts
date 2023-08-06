@@ -51,7 +51,7 @@ export default function thumbhashPlugin(): import('bun').BunPlugin {
         // ThumbHash to data URL
         const placeholderURL = thumbHashToDataURL(binaryThumbHash)
 
-        let originalSrc: any;
+        let originalSrc: string | unknown;
 
         try {
           originalSrc = await import(args.path)
