@@ -19,13 +19,10 @@ bun install bun-plugin-thumbhash
 ## Usage
 
 ```ts
+import { plugin } from 'bun'
 import thumbhash from 'bun-plugin-thumbhash'
 
-await Bun.build({
-  entrypoints: ['./index.tsx'],
-  outdir: './dist',
-  plugins: [thumbhash()],
-})
+plugin(thumbhash())
 ```
 
 ```tsx
