@@ -19,10 +19,9 @@ bun install bun-plugin-thumbhash
 ## Usage
 
 ```ts
-import { plugin } from 'bun'
 import thumbhash from 'bun-plugin-thumbhash'
 
-plugin(thumbhash())
+Bun.plugin(thumbhash())
 ```
 
 ```tsx
@@ -32,7 +31,7 @@ export function App() {
   const [isLoading] = useState(false)
   return (
     <>
-      { isLoading 
+      { isLoading
         ? <img src={Image.src} width={Image.width} height={Image.height} />
         : <img src={Image.originalSrc} width={Image.originalWidth} height={Image.originalHeight} />
       }
