@@ -12,6 +12,8 @@
     "noEmit": true,
     "outDir": "dist",
     "resolveJsonModule": true,
-    "types": ["bun-types"]
+    "types": [
+      "bun-types"
+    ]
   }
 }

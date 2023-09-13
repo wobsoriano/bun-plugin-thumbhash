@@ -11,7 +11,7 @@
   "types": "dist/index.d.ts",
   "description": "ThumbHash plugin for Bun.",
   "scripts": {
-    "dev": "bun run --watch dev/index.ts",
+    "dev": "bun run --watch dev/index.tsx",
     "build": "bun run build.mjs",
     "prepublishOnly": "bun run build",
     "release": "bumpp && npm publish"
@@ -32,15 +32,15 @@
   "bugs": "https://github.com/wobsoriano/bun-plugin-thumbhash/issues",
   "author": "Robert Soriano <sorianorobertc@gmail.com>",
   "devDependencies": {
-    "bun-plugin-dts": "^0.1.0",
-    "bun-types": "^0.7.1",
-    "typescript": "^5.1.6",
-    "bumpp": "^9.1.1",
-    "@elysiajs/html": "^0.5.2",
-    "elysia": "^0.5.25"
+    "@elysiajs/html": "^0.6.5",
+    "bumpp": "^9.2.0",
+    "bun-plugin-dts": "^0.2.0",
+    "bun-types": "^1.0.1",
+    "elysia": "^0.6.23",
+    "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@napi-rs/canvas": "^0.1.41",
+    "@napi-rs/canvas": "^0.1.44",
     "thumbhash": "^0.1.1"
   }
 }

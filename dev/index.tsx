@@ -16,9 +16,8 @@ const page = `<!DOCTYPE HTML>
 </html>`
 
 new Elysia()
-    .use(html())
-    .get('/', () => page)
-    .get('/html', ({ html }) => html(page))
-    .listen(8080)
+  .use(html())
+  .get('/', () => page)
+  .listen(8080)
 
 console.log('Running on port 8080')

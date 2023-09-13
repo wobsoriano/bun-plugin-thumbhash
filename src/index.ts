@@ -15,46 +15,34 @@ export default function thumbhashPlugin(): import('bun').BunPlugin {
     async setup(build) {
       const exportsCache = new Map<string, Record<string, any>>()
 
-      build.onResolve({ filter: /.*\?thumb$/ }, args => ({
-        path: args.path,
-        namespace: 'thumbhash',
-      }))
+      build.onLoad({ filter: /\.(png|jpe?g|gif|webp|bmp|svg|ico)\?thumb$/ }, async (args) => {
+        const [path] = args.path.split('?')
 
-      build.onResolve({ filter: /.*/, namespace: 'thumbhash' }, args => {
-        const path = Bun.fileURLToPath(new URL(args.path, Bun.pathToFileURL(args.importer)))
-        
-        return {
-          path,
-          namespace: 'thumbhash',
-        }
-      })
-
-      build.onLoad({ filter: /\.(png|jpe?g|gif|webp|bmp|tiff?)$/, namespace: 'thumbhash' }, async (args) => {
-        if (exportsCache.has(args.path)) {
+        if (exportsCache.has(path)) {
           return {
-            contents: `export default ${JSON.stringify(exportsCache.get(args.path))}`,
+            contents: `export default ${JSON.stringify(exportsCache.get(path))}`,
             loader: 'js',
           }
         }
 
-        const image = await loadImage(args.path)
+        const image = await loadImage(path)
         const canvas = createCanvas(image.width, image.height)
         const context = canvas.getContext('2d')
-        
+
         const scale = 100 / Math.max(image.width, image.height)
         canvas.width = Math.round(image.width * scale)
         canvas.height = Math.round(image.height * scale)
         context.drawImage(image, 0, 0, canvas.width, canvas.height)
         const pixels = context.getImageData(0, 0, canvas.width, canvas.height)
         const binaryThumbHash = rgbaToThumbHash(pixels.width, pixels.height, pixels.data)
-        
+
         // ThumbHash to data URL
         const placeholderURL = thumbHashToDataURL(binaryThumbHash)
 
         let originalSrc: string | unknown;
 
         try {
-          originalSrc = await import(args.path)
+          originalSrc = await import(path)
         } catch {
           originalSrc = bufferToDataURL(image.src)
         }
@@ -68,7 +56,7 @@ export default function thumbhashPlugin(): import('bun').BunPlugin {
           originalWidth: image.width,
         }
 
-        exportsCache.set(args.path, exports)
+        exportsCache.set(path, exports)
 
         return {
           contents: `export default ${JSON.stringify(exports)}`,
@@ -77,4 +65,4 @@ export default function thumbhashPlugin(): import('bun').BunPlugin {
       })
     }
   }
-} 
+}
