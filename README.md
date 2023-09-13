@@ -30,12 +30,12 @@ import Image from './example.png?thumb'
 export function App() {
   const [isLoading] = useState(false)
   return (
-    <>
+    <div>
       { isLoading
         ? <img src={Image.src} width={Image.width} height={Image.height} />
         : <img src={Image.originalSrc} width={Image.originalWidth} height={Image.originalHeight} />
       }
-    </>
+    </div>
   )
 }
 ```
