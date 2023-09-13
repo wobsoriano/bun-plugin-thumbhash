@@ -39,13 +39,7 @@ export default function thumbhashPlugin(): import('bun').BunPlugin {
         // ThumbHash to data URL
         const placeholderURL = thumbHashToDataURL(binaryThumbHash)
 
-        let originalSrc: string | unknown;
-
-        try {
-          originalSrc = await import(path)
-        } catch {
-          originalSrc = bufferToDataURL(image.src)
-        }
+        const originalSrc = bufferToDataURL(image.src)
 
         const exports = {
           src: placeholderURL,
